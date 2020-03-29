@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
         price: 89.00,
         isFavorite: false,
         discount: 20,
-        reviewNumber: 48,
+        reviewNumber: 80,
       ),
       ProductModel(
         id: 1,
@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
         price: 118.00,
         isFavorite: false,
         discount: 0,
-        reviewNumber: 80,
+        reviewNumber: 48,
       ),
     ];
 
@@ -118,7 +118,6 @@ class _HomeState extends State<Home> {
                           isFavorite: productModel.isFavorite,
                           discount: productModel.discount,
                           onTap: () {
-                            print(productModel.reviewNumber);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
