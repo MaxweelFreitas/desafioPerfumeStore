@@ -7,6 +7,7 @@ class ProductItem extends StatefulWidget {
   final double price;
   final bool isFavorite;
   final int discount;
+  final int reviewNumber;
   final Function onTap;
 
   ProductItem({
@@ -16,7 +17,9 @@ class ProductItem extends StatefulWidget {
     this.price,
     this.isFavorite = false,
     this.discount,
-    this.onTap, this.factoryName,
+    this.onTap,
+    this.factoryName,
+    this.reviewNumber,
   }) : super(key: key);
 
   @override

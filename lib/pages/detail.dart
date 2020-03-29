@@ -9,6 +9,7 @@ class Detail extends StatefulWidget {
   final double price;
   final bool isFavorite;
   final int discount;
+  final int reviewNumber;
 
   Detail({
     Key key,
@@ -18,6 +19,7 @@ class Detail extends StatefulWidget {
     @required this.price,
     this.isFavorite = false,
     this.discount,
+    this.reviewNumber,
   }) : super(key: key);
 
   @override
@@ -117,7 +119,9 @@ class _DetailState extends State<Detail> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            '48 reviews',
+                            widget.reviewNumber > 1
+                                ? widget.reviewNumber.toString() + ' reviews'
+                                : widget.reviewNumber.toString() + ' review',
                             style: TextStyle(
                                 color: Color(0XFFD8D6D7), fontSize: 16),
                           ),
@@ -179,7 +183,7 @@ class _DetailState extends State<Detail> {
             actions: <Widget>[
               IconButton(
                   icon: Icon(
-                    Icons.favorite,
+                    MdiIcons.heartOutline,
                     color: Colors.black,
                   ),
                   onPressed: () {})

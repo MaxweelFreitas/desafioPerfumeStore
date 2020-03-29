@@ -21,29 +21,32 @@ class _HomeState extends State<Home> {
       ProductModel(
         id: 1,
         title: 'Chanel Coco Noir',
-        factoryName: '',
+        factoryName: 'Huda Beauty',
         picture: 'https://i.imgur.com/J2wBTng.png',
         price: 99.50,
         isFavorite: false,
         discount: 0,
+        reviewNumber: 120,
       ),
       ProductModel(
         id: 2,
         title: 'Orange Sanguine Atelier',
-        factoryName: '',
+        factoryName: 'Huda Beauty',
         picture: 'https://i.imgur.com/aAjZPW8.png',
         price: 121.00,
         isFavorite: false,
         discount: 0,
+        reviewNumber: 1,
       ),
       ProductModel(
         id: 3,
         title: 'My Burberry Black',
-        factoryName: '',
+        factoryName: 'Huda Beauty',
         picture: 'https://i.imgur.com/NHi23VR.png',
         price: 89.00,
         isFavorite: false,
         discount: 20,
+        reviewNumber: 48,
       ),
       ProductModel(
         id: 1,
@@ -53,10 +56,11 @@ class _HomeState extends State<Home> {
         price: 118.00,
         isFavorite: false,
         discount: 0,
+        reviewNumber: 80,
       ),
     ];
 
-    ProductModel productModel;
+    var itemDeal= listProduct;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -106,7 +110,7 @@ class _HomeState extends State<Home> {
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        productModel = listProduct[index];
+                        ProductModel productModel = listProduct[index];
                         return ProductItem(
                           title: productModel.title,
                           picture: productModel.picture,
@@ -114,6 +118,7 @@ class _HomeState extends State<Home> {
                           isFavorite: productModel.isFavorite,
                           discount: productModel.discount,
                           onTap: () {
+                            print(productModel.reviewNumber);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -124,6 +129,7 @@ class _HomeState extends State<Home> {
                                   price: productModel.price,
                                   isFavorite: productModel.isFavorite,
                                   discount: productModel.discount,
+                                  reviewNumber: productModel.reviewNumber,
                                 ),
                               ),
                             );
@@ -166,12 +172,12 @@ class _HomeState extends State<Home> {
           ),
 
           BestDealItem(
-            title: listProduct[2].title,
-            factoryName: listProduct[2].factoryName,
-            picture: listProduct[2].picture,
-            price: listProduct[2].price,
-            isFavorite: listProduct[2].isFavorite,
-            discount: listProduct[2].discount,
+            title: itemDeal[2].title,
+            factoryName: itemDeal[2].factoryName,
+            picture: itemDeal[2].picture,
+            price: itemDeal[2].price,
+            isFavorite: itemDeal[2].isFavorite,
+            discount: itemDeal[2].discount,
           ),
         ],
       ),

@@ -16,6 +16,7 @@ class ProductModel {
   final double price;
   final bool isFavorite;
   final int discount;
+  final int reviewNumber;
 
   ProductModel({
     this.id,
@@ -25,6 +26,7 @@ class ProductModel {
     this.price,
     this.isFavorite,
     this.discount,
+    this.reviewNumber,
   });
 
   ProductModel copyWith({
