@@ -1,3 +1,10 @@
+import 'package:desafioperfume/models/Product.dart';
+import 'package:desafioperfume/pages/detail.dart';
+import 'package:desafioperfume/widgets/best_deal_item.dart';
+import 'package:desafioperfume/widgets/product_item.dart';
+import 'package:desafioperfume/widgets/scent_list.dart';
+import 'package:desafioperfume/widgets/sidebar_widget.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -9,70 +16,47 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    List<String> scentNotes = [
-      "",
-      "Floral",
-      "warm & spicy",
-      "Bergamot",
-      "Cedar",
-      "Citrus",
-      "Earthy Greens",
-      "Fresh",
-      "Fruity",
-      "Jasmine",
-      "Lemon",
-      "Musk & Amber",
-      "Patchouli",
-      "Rose",
-      "Vanilla",
-      "Vetiver",
-      "Woodsy",
-      "Woody"
+
+    List<ProductModel> listProduct = [
+      ProductModel(
+        id: 1,
+        title: 'Chanel Coco Noir',
+        factoryName: '',
+        picture: 'https://i.imgur.com/J2wBTng.png',
+        price: 99.50,
+        isFavorite: false,
+        discount: 0,
+      ),
+      ProductModel(
+        id: 2,
+        title: 'Orange Sanguine Atelier',
+        factoryName: '',
+        picture: 'https://i.imgur.com/aAjZPW8.png',
+        price: 121.00,
+        isFavorite: false,
+        discount: 0,
+      ),
+      ProductModel(
+        id: 3,
+        title: 'My Burberry Black',
+        factoryName: '',
+        picture: 'https://i.imgur.com/NHi23VR.png',
+        price: 89.00,
+        isFavorite: false,
+        discount: 20,
+      ),
+      ProductModel(
+        id: 1,
+        title: 'kayali Elixir 11',
+        factoryName: 'Huda Beauty',
+        picture: 'https://i.imgur.com/zhqehXD.png',
+        price: 118.00,
+        isFavorite: false,
+        discount: 0,
+      ),
     ];
-    //LoadScentNotesList
-    var listViewScentNotes = ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: scentNotes.length,
-      itemBuilder: (context, index) {
-        String scent = scentNotes[index];
-        if (index == 0) {
-          return Container(
-            margin: EdgeInsets.only(left: 16, right: 5),
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Color(0XFF59A05E),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Icon(Icons.tune, color: Colors.white),
-              ),
-            ),
-          );
-        } else {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            margin: EdgeInsets.symmetric(horizontal: 5),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Color(0XFFD8D6D7)),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                scent.toUpperCase(),
-                style: TextStyle(
-                  color: Color(0XFF59A05E),
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          );
-        }
-      },
-    );
+
+    ProductModel productModel;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -84,7 +68,7 @@ class _HomeState extends State<Home> {
             onPressed: () {}),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.shopping_basket, color: Colors.black),
+              icon: Icon(MdiIcons.shoppingOutline, color: Colors.black),
               onPressed: () {})
         ],
       ),
@@ -94,124 +78,100 @@ class _HomeState extends State<Home> {
           //Title
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(left: 16),
-            child: Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: Text(
-                'Perfume',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                ),
+            margin: EdgeInsets.only(left: 16, bottom: 20),
+            child: Text(
+              'Perfume',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
               ),
             ),
           ),
-          //Carousel
-          Container(
-            margin: EdgeInsets.only(bottom: 25),
-            height: size.height * 0.062,
-            child: listViewScentNotes,
-          ),
+          //Scents Carousel
+          ScentList(),
           //ListOfCardProducts
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Container(
-                height: size.height * 0.333,
-                margin: EdgeInsets.only(right: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    RotatedBox(
-                      quarterTurns: 3,
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
-                            'SUGGESTED',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Color(0XFF59A05E),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    RotatedBox(
-                      quarterTurns: 3,
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
-                            'POPULAR',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Color(0XFFD8D6D7),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+              SidebarWidget(),
+              //CardLayout
+              Expanded(
+                child: Container(
+                  height: size.height * 0.42,
+                  child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: listProduct.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        productModel = listProduct[index];
+                        return ProductItem(
+                          title: productModel.title,
+                          picture: productModel.picture,
+                          price: productModel.price,
+                          isFavorite: productModel.isFavorite,
+                          discount: productModel.discount,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Detail(
+                                  title: productModel.title,
+                                  factoryName: productModel.factoryName,
+                                  picture: productModel.picture,
+                                  price: productModel.price,
+                                  isFavorite: productModel.isFavorite,
+                                  discount: productModel.discount,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }),
                 ),
               ),
-
-              //CardLayout
-              Stack(
-                children: <Widget>[
-                  Container(
-                    height: size.height * 0.333,
-                    width: size.width * 0.388,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      gradient: LinearGradient(
-                        colors: [Color(0XFF8BB957), Color(0XFF59A463)],
-                        stops: [0, 1],
-                        begin: FractionalOffset.topLeft,
-                        end: FractionalOffset.bottomRight,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: -0.1,
-                    child: Container(
-                      height: size.height * 0.062,
-                      width: size.width * 0.111,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          )),
-                      padding: EdgeInsets.all(10),
-                      child: Icon(Icons.favorite),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0, right: 0,
-                    bottom: size.height * 0.062,
-                    child: Image.network(
-                      'https://i.imgur.com/J2wBTng.png',
-                      height: size.height * 0.203,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: size.height * 0.02),
-//              Container(
-//                height: 20,
-//                child: ListTile(
-//                  title: Text('Chanel Coco Noir'),
-//                  subtitle: Text('€ 99.50'),
-//                ),
-//              )
             ],
+          ),
+
+          //BestDeal title
+          Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: 16, vertical: size.height * 0.05),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Best deals',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+                //BestDeals
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'ALL',
+                      style: TextStyle(color: Color(0XFFD8D6D7)),
+                    ),
+                    Icon(MdiIcons.chevronRightCircleOutline, color: Color(0XFFD8D6D7)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          BestDealItem(
+            title: listProduct[2].title,
+            factoryName: listProduct[2].factoryName,
+            picture: listProduct[2].picture,
+            price: listProduct[2].price,
+            isFavorite: listProduct[2].isFavorite,
+            discount: listProduct[2].discount,
           ),
         ],
       ),

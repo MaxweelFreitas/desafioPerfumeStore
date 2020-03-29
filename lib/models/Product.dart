@@ -11,6 +11,7 @@ String productModelToJson(List<ProductModel> data) => json.encode(List<dynamic>.
 class ProductModel {
   final int id;
   final String title;
+  final factoryName;
   final String picture;
   final double price;
   final bool isFavorite;
@@ -19,6 +20,7 @@ class ProductModel {
   ProductModel({
     this.id,
     this.title,
+    this.factoryName,
     this.picture,
     this.price,
     this.isFavorite,
@@ -28,6 +30,7 @@ class ProductModel {
   ProductModel copyWith({
     int id,
     String title,
+    String factoryName,
     String picture,
     double price,
     bool isFavorite,
@@ -36,6 +39,7 @@ class ProductModel {
       ProductModel(
         id: id ?? this.id,
         title: title ?? this.title,
+        factoryName: factoryName ?? this.factoryName,
         picture: picture ?? this.picture,
         price: price ?? this.price,
         isFavorite: isFavorite ?? this.isFavorite,
@@ -45,6 +49,7 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> json) => ProductModel(
     id: json["id"] == null ? null : json["id"],
     title: json["title"] == null ? null : json["title"],
+    factoryName: json["factoryName"] == null ? null : json["factoryName"],
     picture: json["picture"] == null ? null : json["picture"],
     price: json["price"] == null ? null : json["price"].toDouble(),
     isFavorite: json["isFavorite"] == null ? null : json["isFavorite"],
@@ -54,6 +59,7 @@ class ProductModel {
   Map<String, dynamic> toMap() => {
     "id": id == null ? null : id,
     "title": title == null ? null : title,
+    "factoryName": factoryName == null ? null : factoryName,
     "picture": picture == null ? null : picture,
     "price": price == null ? null : price,
     "isFavorite": isFavorite == null ? null : isFavorite,

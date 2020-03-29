@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
           //navigationBar color
-          systemNavigationBarColor: Color(0XFF59A05E), //bottom bar color
-          systemNavigationBarIconBrightness: Brightness.light, //bottom bar icons
+          systemNavigationBarColor: Colors.white, //bottom bar color
+          systemNavigationBarIconBrightness: Brightness.dark, //bottom bar icons
         )
     );
     //Orientations configs of app
